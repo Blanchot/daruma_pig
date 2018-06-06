@@ -1,7 +1,6 @@
 # daruma01
 # test of luma library
 
-'''
 # code below from here: https://media.readthedocs.org/pdf/max7219/stable/max7219.pdf
 from luma.core.interface.serial import spi, noop
 from luma.core.render import canvas
@@ -10,12 +9,16 @@ from luma.led_matrix.device import max7219
 serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=1)
 seg = sevensegment(device)
-'''
-import requests, json
-from time import sleep
+
+# import requests, json
+# from time import sleep
 
 # write test
-#seg.text = "HELLO"
+
+seg.text = "HELLO"
+
+'''
+# Sample code that works:
 
 def getBitcoinPrice():
   URL = 'https://www.bitstamp.net/api/ticker/'
@@ -29,4 +32,9 @@ def getBitcoinPrice():
 while True:
   print("Bitstamp last price: $" + str(getBitcoinPrice()) + "/BTC")
   sleep(5)
+
+'''
+#Coin Market Cap has what I need:
+#URL: https://api.coinmarketcap.com/v2/ticker/1955/?convert=EUR
+#INFO: https://coinmarketcap.com/api/
 
