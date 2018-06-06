@@ -23,9 +23,9 @@ def getBitcoinPrice():
         priceFloat = float(json.loads(r.text)['last'])
         return priceFloat
     except requests.ConnectionError:
-        print "Error querying Bitstamp API"
+        print("Error querying Bitstamp API")
 
 while True:
-  print "Bitstamp last price: $" + str(getBitcoinPrice()) + "/BTC"
+  print("Bitstamp last price: $" + str(getBitcoinPrice()) + "/BTC")
   sleep(5)
 
