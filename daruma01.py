@@ -1,5 +1,6 @@
 # daruma01
-# b01 first test: getting and displaying Neblio price
+# b02 added 24hr change % to Neblio price line
+# See neblioRequestTest.py in Pythonista for testing formatting 
 
 # code below from here: https://media.readthedocs.org/pdf/max7219/stable/max7219.pdf
 from luma.core.interface.serial import spi, noop
@@ -18,40 +19,34 @@ from time import sleep
 
 URL = 'https://api.coinmarketcap.com/v2/ticker/1955/?convert=EUR'
 
-# write test
-#seg.text = "HELLO"
+# Formatters for python 3.5:
+# https://www.digitalocean.com/community/tutorials/how-to-use-string-formatters-in-python-3
+
 
 def getNeblioPrice():
   try:
     r = requests.get(URL)
     nprice = json.loads(r.text)['data']['quotes']['EUR']['price']
-    nprice = str(nprice)
+    n24hrChange = json.loads(r.text)['data']['quotes']['EUR']['percent_change_24h']
+    nprice = str(nprice) #need to do this here, can't figure how to slice float to four digits with formatting
     nprice = nprice[0:5] #slice nprice
     print(nprice) #can comment this out later
-    return nprice
+    n24hrChange = json.loads(r.text)['data']['quotes']['EUR']['percent_change_24h']
+    print('Percent Change Last 24hr: ', str(n24hrChange)) #can comment this out later
+    
+    npriceAndChange = nprice + " {0:>4.1f}".format(n24hrChange)
+    print(npriceAndChange) #can comment this out later
+    #return nprice #nprice only
+    return npriceAndChange
+    
   except requests.ConnectionError:
     print("Error querying Coinmarketcap API")
 
+#seg.text = "HELLO"
+
 while True:
   seg.text = getNeblioPrice()
-  sleep(60)
+  sleep(60) # checks once a minute
+  #sleep(300) # checks every 5 minutes
 
-
-'''
-# Sample code that works:
-
-def getBitcoinPrice():
-  URL = 'https://www.bitstamp.net/api/ticker/'
-  try:
-    r = requests.get(URL)
-    priceFloat = float(json.loads(r.text)['last'])
-    return priceFloat
-  except requests.ConnectionError:
-    print("Error querying Bitstamp API")
-
-while True:
-  print("Bitstamp last price: $" + str(getBitcoinPrice()) + "/BTC")
-  sleep(5)
-
-'''
 
