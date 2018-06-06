@@ -1,5 +1,5 @@
 # daruma01
-# test of luma library
+# b01 first test: getting and displaying Neblio price
 
 # code below from here: https://media.readthedocs.org/pdf/max7219/stable/max7219.pdf
 from luma.core.interface.serial import spi, noop
@@ -10,12 +10,32 @@ serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=1)
 seg = sevensegment(device)
 
-# import requests, json
-# from time import sleep
+import requests, json
+from time import sleep
+
+# Using coinmarketcap.com
+#INFO: https://coinmarketcap.com/api/
+
+URL = 'https://api.coinmarketcap.com/v2/ticker/1955/?convert=EUR'
 
 # write test
+#seg.text = "HELLO"
 
-seg.text = "HELLO"
+def getNeblioPrice():
+  try:
+    r = requests.get(URL)
+    nprice = json.loads(r.text)['data']['quotes']['EUR']['price']
+    nprice = str(nprice)
+    nprice = nprice[0:5] #slice nprice
+    print(nprice) #can comment this out later
+    return nprice
+  except requests.ConnectionError:
+    print("Error querying Coinmarketcap API")
+
+while True:
+  seg.text = getNeblioPrice()
+  sleep(60)
+
 
 '''
 # Sample code that works:
@@ -34,7 +54,4 @@ while True:
   sleep(5)
 
 '''
-#Coin Market Cap has what I need:
-#URL: https://api.coinmarketcap.com/v2/ticker/1955/?convert=EUR
-#INFO: https://coinmarketcap.com/api/
 
