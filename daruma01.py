@@ -46,7 +46,7 @@ def getNeblioPrice():
 
 while True:
   seg.text = getNeblioPrice()
-  sleep(60) # checks once a minute
-  #sleep(300) # checks every 5 minutes
+  #sleep(60) # checks once a minute
+  sleep(300) # checks every 5 minutes
 
 
