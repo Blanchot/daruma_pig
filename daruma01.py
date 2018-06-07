@@ -32,8 +32,9 @@ def getNeblioPrice():
     n24hrChange = json.loads(r.text)['data']['quotes']['EUR']['percent_change_24h']
     changeIndicator(nprice) #send current price to changeIndicator as float
     nprice = str(nprice) #need to do this here, can't figure how to slice float to four digits with formatting
+    print('Current price: ', nprice) #can comment this out later
     nprice = nprice[0:5] #slice nprice
-    print(nprice) #can comment this out later
+    
     n24hrChange = json.loads(r.text)['data']['quotes']['EUR']['percent_change_24h']
     print('Percent Change Last 24hr: ', str(n24hrChange)) #can comment this out later
     
@@ -49,7 +50,7 @@ def getNeblioPrice():
 def changeIndicator(nprice):
   global prevPrice
   diff = nprice - prevPrice
-  print(diff) #can comment this out later
+  print('Diff since last check: ', str(diff)) #can comment this out later
   if diff > 0:
     buttonshim.set_pixel(0,255,0) #value increasing since last check = green
   elif diff < 0:
@@ -61,6 +62,7 @@ def changeIndicator(nprice):
 
 while True:
   seg.text = getNeblioPrice()
+  print() # separator
   sleep(60) # checks once a minute
   #sleep(300) # checks every 5 minutes
 
