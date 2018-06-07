@@ -64,7 +64,7 @@ def changeIndicator(nprice):
 while True:
   seg.text = getNeblioPrice()
   print() # separator
-  sleep(60) # checks once a minute
-  #sleep(300) # checks every 5 minutes
+  #sleep(60) # checks once a minute
+  sleep(300) # checks every 5 minutes
 
 
