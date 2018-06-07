@@ -52,9 +52,9 @@ def changeIndicator(nprice):
   global prevPrice
   diff = nprice - prevPrice
   print('Diff since last check: ', str(diff)) #can comment this out later
-  if diff > 0.01:
+  if diff >= 0.01:
     buttonshim.set_pixel(0,255,0) #value increasing since last check = green
-  elif diff < 0.01:
+  elif diff <= -0.01:
     buttonshim.set_pixel(255,0,0) #value decreasing since last check = red
   else:
     buttonshim.set_pixel(0,0,255) #value unchanged since last check  = blue
