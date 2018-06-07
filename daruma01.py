@@ -48,14 +48,15 @@ def getNeblioPrice():
 
 
 def changeIndicator(nprice):
+  #Button SHIM indicator changes if the price diff is more than 1 cent
   global prevPrice
   diff = nprice - prevPrice
   print('Diff since last check: ', str(diff)) #can comment this out later
-  if diff > 0:
+  if diff > 0.01:
     buttonshim.set_pixel(0,255,0) #value increasing since last check = green
-  elif diff < 0:
+  elif diff < 0.01:
     buttonshim.set_pixel(255,0,0) #value decreasing since last check = red
-  elif diff == 0:
+  else:
     buttonshim.set_pixel(0,0,255) #value unchanged since last check  = blue
   prevPrice = nprice
 
@@ -63,7 +64,7 @@ def changeIndicator(nprice):
 while True:
   seg.text = getNeblioPrice()
   print() # separator
-  #sleep(60) # checks once a minute
-  sleep(300) # checks every 5 minutes
+  sleep(60) # checks once a minute
+  #sleep(300) # checks every 5 minutes
 
 
