@@ -1,6 +1,8 @@
 # daruma01
-# b03 added button SHIM pixel notification
+# b04 change nprice slice because of OverflowError
 # See neblioRequestTest.py in Pythonista for testing formatting 
+
+#OverflowError: Devices capabilities insufficient for value: '5.485 -10.0'
 
 # code below from here: https://media.readthedocs.org/pdf/max7219/stable/max7219.pdf
 from luma.core.interface.serial import spi, noop
@@ -33,7 +35,8 @@ def getNeblioPrice():
     changeIndicator(nprice) #send current price to changeIndicator as float
     nprice = str(nprice) #need to do this here, can't figure how to slice float to four digits with formatting
     print('Current price: ', nprice) #can comment this out later
-    nprice = nprice[0:5] #slice nprice
+    nprice = nprice[0:4] #slice nprice
+    #nprice = nprice[0:5] #slice nprice was [0:5] but got OverflowError when percent change dropped too much
     
     n24hrChange = json.loads(r.text)['data']['quotes']['EUR']['percent_change_24h']
     print('Percent Change Last 24hr: ', str(n24hrChange)) #can comment this out later
