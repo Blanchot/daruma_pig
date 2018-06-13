@@ -66,7 +66,8 @@ def getBTC_euro(nbBTC):
     
     # Send to changeIndicator rounded to 2 decimal places (for ButtonShim)
     eurRound = round(nbEUR,2)
-    #changeIndicator(eurRound)
+    print('Euro rounded: ',eurRound)
+    changeIndicator(eurRound)
     
     return eurPrice
     
