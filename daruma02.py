@@ -66,7 +66,6 @@ def getBTC_euro(nbBTC):
     
     # Send to changeIndicator rounded to 2 decimal places (for ButtonShim)
     eurRound = round(nbEUR,2)
-    print('Euro rounded: ',eurRound)
     changeIndicator(eurRound)
     
     return eurPrice
@@ -90,8 +89,8 @@ def changeIndicator(eurRound):
 while True:
   seg.text = getNEBL_btc()
   print() # separator
-  sleep(60) # checks once a minute
-  #sleep(300) # checks every 5 minutes
+  #sleep(60) # checks once a minute
+  sleep(300) # checks every 5 minutes
 
 '''
 NOTES
