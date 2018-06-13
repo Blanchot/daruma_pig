@@ -77,7 +77,7 @@ def getBTC_euro(nbBTC):
 def changeIndicator(eurRound):
   #Button SHIM indicator changes if the price diff is more than 1 cent
   global prevPrice
-  diff = nprice - prevPrice
+  diff = eurRound - prevPrice
   print('Diff since last check: ', str(diff)) #can comment this out later
   if diff >= 0.01:
     buttonshim.set_pixel(0,255,0) #value increasing since last check = green
@@ -85,7 +85,7 @@ def changeIndicator(eurRound):
     buttonshim.set_pixel(255,0,0) #value decreasing since last check = red
   else:
     buttonshim.set_pixel(0,0,255) #value unchanged since last check  = blue
-  prevPrice = nprice
+  prevPrice = eurRound
 
 while True:
   seg.text = getNEBL_btc()
