@@ -41,7 +41,7 @@ def getNEBL_btc():
     # Let's not do this (below) here:
     # change24 = '{:0.1f}'.format(nbBTC_change24) #str truncated for display
     
-    return euroPrice, change24 #floats)
+    return euroPrice, nbBTC_change24 #floats)
     
   except requests.ConnectionError:
     print("Error querying Binance API")
