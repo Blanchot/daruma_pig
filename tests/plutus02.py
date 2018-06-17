@@ -74,9 +74,9 @@ def twin_display():
   str2 = str(round((neb_amt * euroPrice),2))
   #euroPrice = '{:0.2f}'.format(nbEUR) #for display
   if len(str1) >= 0: # and len(str1) <= 10:
-    str1 = '{:<8}'.format(str1) # don't know if I need the 's' 
+    str1 = '{:<10}'.format(str1) # don't know if I need the 's' 
     print(str1)
-    str2 = '{:<8}'.format(str2)
+    str2 = '{:<9}'.format(str2)
     print(str2)
     total_str = str1 + str2
     return total_str
