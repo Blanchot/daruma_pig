@@ -51,7 +51,7 @@ def getBTC_euro(nbBTC):
     r = requests.get(URL_2)
     btcEuro = json.loads(r.text)['data']['amount']
     euroPrice = float(nbBTC) * float(btcEuro) # NEBL price in EUR
-    print('1 NEBL (EUR): {:0.2f}'.format(nbEUR))
+    print('1 NEBL (EUR): {:0.2f}'.format(euroPrice))
     
     '''
     # Send to changeIndicator rounded to 2 decimal places (for ButtonShim)
