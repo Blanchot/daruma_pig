@@ -35,12 +35,13 @@ def getNEBL_btc():
     print('Change (24hrs): {:0.1f}'.format(nbBTC_change24))
     
     # Send bitcoin price to euro converter
-    euroPrice = getBTC_euro(nbBTC)
+    euroPrice = getBTC_euro(nbBTC) #this should be a float
     
     # Compile and return text
-    change24 = '{:0.1f}'.format(nbBTC_change24) #str truncated for display
+    # Let's not do this (below) here:
+    # change24 = '{:0.1f}'.format(nbBTC_change24) #str truncated for display
     
-    return euroPrice, change24
+    return euroPrice, change24 #floats)
     
   except requests.ConnectionError:
     print("Error querying Binance API")
@@ -50,7 +51,8 @@ def getBTC_euro(nbBTC):
   try:
     r = requests.get(URL_2)
     btcEuro = json.loads(r.text)['data']['amount']
-    euroPrice = float(nbBTC) * float(btcEuro) # NEBL price in EUR
+    #euroPrice = float(nbBTC) * float(btcEuro) #(don't need to turn nbBTC to float again!)
+    euroPrice = nbBTC * float(btcEuro) # NEBL price in EUR
     print('1 NEBL (EUR): {:0.2f}'.format(euroPrice))
     
     '''
@@ -67,7 +69,7 @@ def getBTC_euro(nbBTC):
 def twin_display():
   euroPrice, change24 = getNEBL_btc()
   euroPrice = round(euroPrice,2)
-  #change24 = round(change24,2)
+  change24 = round(change24,2)
   str1 = '{} {}'.format(euroPrice,change24)
   str2 = str(round((neb_amt * euroPrice),2))
   #euroPrice = '{:0.2f}'.format(nbEUR) #for display
