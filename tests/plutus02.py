@@ -35,7 +35,7 @@ def getNEBL_btc():
     print('Change (24hrs): {:0.1f}'.format(nbBTC_change24))
     
     # Send bitcoin price to euro converter
-    eurPrice = getBTC_euro(nbBTC)
+    euroPrice = getBTC_euro(nbBTC)
     
     # Compile and return text
     change24 = '{:0.1f}'.format(nbBTC_change24) #str truncated for display
@@ -59,8 +59,8 @@ def getBTC_euro(nbBTC):
     changeIndicator(eurRound)
     '''
     
-    eurPrice = '{:0.2f}'.format(nbEUR) #for display
-    return eurPrice
+    euroPrice = '{:0.2f}'.format(nbEUR) #for display
+    return euroPrice
     
   except requests.ConnectionError:
     print("Error querying Coinbase API")
@@ -68,8 +68,8 @@ def getBTC_euro(nbBTC):
 
 def twin_display():
   euroPrice, change24 = getNEBL_btc()
-  str1 = '{} {}'.format(eurPrice,change24)
-  str2 = str(round(neb_amt * eurPrice,2))
+  str1 = '{} {}'.format(euroPrice,change24)
+  str2 = str(round(neb_amt * euroPrice,2))
   if len(str1) >= 0 and len(str1) <= 10:
     str1 = '{:_<8s}'.format(str1) # don't know if I need the 's' 
     print(str1)
