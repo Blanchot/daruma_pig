@@ -67,7 +67,7 @@ def getBTC_euro(nbBTC):
 def twin_display():
   euroPrice, change24 = getNEBL_btc()
   euroPrice = round(euroPrice,2)
-  change24 = round(change24,2)
+  #change24 = round(change24,2)
   str1 = '{} {}'.format(euroPrice,change24)
   str2 = str(round((neb_amt * euroPrice),2))
   #euroPrice = '{:0.2f}'.format(nbEUR) #for display
