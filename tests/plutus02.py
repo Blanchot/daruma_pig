@@ -50,7 +50,7 @@ def getBTC_euro(nbBTC):
   try:
     r = requests.get(URL_2)
     btcEuro = json.loads(r.text)['data']['amount']
-    nbEUR = float(nbBTC) * float(btcEuro) # NEBL price in EUR
+    euroPrice = float(nbBTC) * float(btcEuro) # NEBL price in EUR
     print('1 NEBL (EUR): {:0.2f}'.format(nbEUR))
     
     '''
