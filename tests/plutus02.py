@@ -58,8 +58,6 @@ def getBTC_euro(nbBTC):
     eurRound = round(nbEUR,2)
     changeIndicator(eurRound)
     '''
-    
-    euroPrice = '{:0.2f}'.format(nbEUR) #for display
     return euroPrice
     
   except requests.ConnectionError:
@@ -69,7 +67,8 @@ def getBTC_euro(nbBTC):
 def twin_display():
   euroPrice, change24 = getNEBL_btc()
   str1 = '{} {}'.format(euroPrice,change24)
-  str2 = str(round(neb_amt * euroPrice,2))
+  str2 = str(round((neb_amt * euroPrice),2))
+  #euroPrice = '{:0.2f}'.format(nbEUR) #for display
   if len(str1) >= 0 and len(str1) <= 10:
     str1 = '{:_<8s}'.format(str1) # don't know if I need the 's' 
     print(str1)
