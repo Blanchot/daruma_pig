@@ -69,7 +69,7 @@ def twin_display():
   str1 = '{} {}'.format(euroPrice,change24)
   str2 = str(round((neb_amt * euroPrice),2))
   #euroPrice = '{:0.2f}'.format(nbEUR) #for display
-  if len(str1) >= 0 and len(str1) <= 10:
+  if len(str1) >= 0: # and len(str1) <= 10:
     str1 = '{:_<8s}'.format(str1) # don't know if I need the 's' 
     print(str1)
     str2 = '{:<8}'.format(str2)
