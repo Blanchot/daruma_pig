@@ -51,7 +51,6 @@ def getBTC_euro(nbBTC):
   try:
     r = requests.get(URL_2)
     btcEuro = json.loads(r.text)['data']['amount']
-    #euroPrice = float(nbBTC) * float(btcEuro) #(don't need to turn nbBTC to float again!)
     euroPrice = nbBTC * float(btcEuro) # NEBL price in EUR
     print('1 NEBL (EUR): {:0.2f}'.format(euroPrice))
     
@@ -72,11 +71,10 @@ def twin_display():
   change24 = round(change24,1)
   str1 = '{} {}'.format(euroPrice,change24)
   str2 = str(round((neb_amt * euroPrice),2))
-  #euroPrice = '{:0.2f}'.format(nbEUR) #for display
   if len(str1) >= 0: # and len(str1) <= 10:
-    str1 = '{:<10}'.format(str1) # don't know if I need the 's' 
+    str1 = '{:<10}'.format(str1) #10 counting the two decimal points
     print(str1)
-    str2 = '{:<9}'.format(str2)
+    str2 = '{:<9}'.format(str2) #9 counting the single decimal point
     print(str2)
     total_str = str1 + str2
     return total_str
@@ -87,8 +85,8 @@ def twin_display():
 while True:
   seg.text = twin_display()
   print() # separator
-  sleep(60) # checks once a minute
-  #sleep(300) # checks every 5 minutes
+  #sleep(60) # checks once a minute
+  sleep(300) # checks every 5 minutes
 
 '''
 Padding Formatting
