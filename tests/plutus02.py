@@ -1,4 +1,5 @@
 # Plutus02 Test (for 2 max7219 displays and Blinkt!)
+# Commented out Blinkt. Will try new LED shim
 
 # luma.led_matrix setup
 from luma.core.interface.serial import spi, noop
@@ -10,16 +11,18 @@ device = max7219(serial, cascaded=2)
 seg = sevensegment(device)
 device.contrast(50) #set display brightness (int: 0 - 255)
 
-import blinkt
+#import blinkt
 import requests, json
 from time import sleep
 
+'''
 # for Blinkt brightness, rgb tuples and pixel list
 blinkt.set_brightness(0.04)
 rise = (0,8,0)
 fall = (32,0,0)
 same = (0,0,192)
 pixels = (0,1,2,3,4,5,6,7)
+'''
 
 neb_amt = 52.7072 # NEBL's owned
 prevPrice = 0.0
