@@ -8,6 +8,7 @@ from luma.led_matrix.device import max7219
 serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=2)
 seg = sevensegment(device)
+device.contrast(50) #set display brightness (int: 0 - 255)
 
 import blinkt
 import requests, json
@@ -90,11 +91,10 @@ def twin_display():
     print('str1 too long!')
     return '--------'
 
-'''
+
 while True:
   seg.text = twin_display()
   print() # separator
   #sleep(60) # checks once a minute
   sleep(300) # checks every 5 minutes
-'''
 
