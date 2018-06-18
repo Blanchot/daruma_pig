@@ -14,7 +14,7 @@ import requests, json
 from time import sleep
 
 # for Blinkt brightness, rgb tuples and pixel list
-blt.set_brightness(0.04)
+blinkt.set_brightness(0.04)
 rise = (0,8,0)
 fall = (32,0,0)
 same = (0,0,192)
