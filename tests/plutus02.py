@@ -1,4 +1,4 @@
-# Plutus02 Tests
+# Plutus02 Test (for 2 max7219 displays and Blinkt!)
 
 # luma.led_matrix setup
 from luma.core.interface.serial import spi, noop
@@ -9,8 +9,16 @@ serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=2)
 seg = sevensegment(device)
 
+import blinkt
 import requests, json
 from time import sleep
+
+# for Blinkt brightness, rgb tuples and pixel list
+blt.set_brightness(0.04)
+rise = (0,8,0)
+fall = (32,0,0)
+same = (0,0,192)
+pixels = (0,1,2,3,4,5,6,7)
 
 neb_amt = 52.7072 # NEBL's owned
 prevPrice = 0.0
@@ -69,8 +77,7 @@ def twin_display():
   euroPrice, change24 = getNEBL_btc()
   euroPrice = round(euroPrice,2)
   change24 = round(change24,1)
-  #str1 = '{} {}'.format(euroPrice,change24)
-  str1 = '{:0.2f} {}'.format(euroPrice,change24) #testing
+  str1 = '{:0.2f} {}'.format(euroPrice,change24) #formatting required to properly print euroPrice
   str2 = str(round((neb_amt * euroPrice),2))
   if len(str1) >= 0: # and len(str1) <= 10:
     str1 = '{:<10}'.format(str1) #10 counting the two decimal points
@@ -83,18 +90,11 @@ def twin_display():
     print('str1 too long!')
     return '--------'
 
+'''
 while True:
   seg.text = twin_display()
   print() # separator
   #sleep(60) # checks once a minute
   sleep(300) # checks every 5 minutes
-
-'''
-Padding Formatting
-https://pyformat.info/#string_pad_align
-https://www.digitalocean.com/community/tutorials/how-to-use-string-formatters-in-python-3
-'{:10}'.format('test') # with spaces
-'{:_<10}'.format('test') #with underscores
-
 '''
 
