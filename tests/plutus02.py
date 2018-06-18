@@ -12,7 +12,7 @@ seg = sevensegment(device)
 device.contrast(50) #set display brightness (int: 0 - 255)
 
 #import blinkt
-#import ledshim
+import ledshim
 import requests, json
 from time import sleep
 
