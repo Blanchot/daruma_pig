@@ -70,7 +70,7 @@ def twin_display():
   euroPrice = round(euroPrice,2)
   change24 = round(change24,1)
   #str1 = '{} {}'.format(euroPrice,change24)
-  str1 = '{ :0.2f} {}'.format(euroPrice,change24) #testing
+  str1 = '{:0.2f} {}'.format(euroPrice,change24) #testing
   str2 = str(round((neb_amt * euroPrice),2))
   if len(str1) >= 0: # and len(str1) <= 10:
     str1 = '{:<10}'.format(str1) #10 counting the two decimal points
