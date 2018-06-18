@@ -11,8 +11,8 @@ device = max7219(serial, cascaded=2)
 seg = sevensegment(device)
 device.contrast(50) #set display brightness (int: 0 - 255)
 
-#import blinkt
-import ledshim
+import blinkt
+#import ledshim
 import requests, json
 from time import sleep
 
