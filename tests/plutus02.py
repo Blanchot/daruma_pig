@@ -12,7 +12,7 @@ seg = sevensegment(device)
 import requests, json
 from time import sleep
 
-neb_amt = 28.741 # NEBL's owned
+neb_amt = 52.7072 # NEBL's owned
 prevPrice = 0.0
 
 # API's Used
@@ -69,7 +69,8 @@ def twin_display():
   euroPrice, change24 = getNEBL_btc()
   euroPrice = round(euroPrice,2)
   change24 = round(change24,1)
-  str1 = '{} {}'.format(euroPrice,change24)
+  #str1 = '{} {}'.format(euroPrice,change24)
+  str1 = '{ :0.2f} {}'.format(euroPrice,change24) #testing
   str2 = str(round((neb_amt * euroPrice),2))
   if len(str1) >= 0: # and len(str1) <= 10:
     str1 = '{:<10}'.format(str1) #10 counting the two decimal points
