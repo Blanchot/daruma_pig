@@ -1,5 +1,5 @@
 # Plutus02 Test (for 2 max7219 displays and Blinkt!)
-# Commented out Blinkt. Will try new LED shim
+# Testing new LED shim
 
 # luma.led_matrix setup
 from luma.core.interface.serial import spi, noop
@@ -12,6 +12,7 @@ seg = sevensegment(device)
 device.contrast(50) #set display brightness (int: 0 - 255)
 
 #import blinkt
+import ledshim
 import requests, json
 from time import sleep
 
@@ -94,10 +95,10 @@ def twin_display():
     print('str1 too long!')
     return '--------'
 
-
+'''
 while True:
   seg.text = twin_display()
   print() # separator
   #sleep(60) # checks once a minute
   sleep(300) # checks every 5 minutes
-
+'''
