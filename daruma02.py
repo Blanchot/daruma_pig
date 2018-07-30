@@ -4,6 +4,12 @@
 
 # Luma code from here: https://media.readthedocs.org/pdf/max7219/stable/max7219.pdf
 
+# 2018.6.26: The following error stopped plutus, plutus02, and thalia checking Binance (URL-1)
+# JSONDecodeError
+# Hand trying the Binance URL returned '502 Bad Gateway'
+# Looks like it was caused by a Binance system upgrade
+# https://support.binance.com/hc/en-us/articles/360005098352-System-Upgrade-Extension
+
 from luma.core.interface.serial import spi, noop
 from luma.core.render import canvas
 from luma.core.virtual import sevensegment
