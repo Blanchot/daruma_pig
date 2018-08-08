@@ -25,7 +25,7 @@ same = (0,0,192)
 pixels = (0,1,2,3,4,5,6,7)
 '''
 
-neb_amt = 242.47727592 # Total NEBL's owned
+neb_amt = 243.01500096 # Total NEBL's owned
 prevPrice = 0.0
 
 # API's Used
