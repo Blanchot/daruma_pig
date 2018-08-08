@@ -1,5 +1,5 @@
-# Plutus02 Test (for 2 max7219 displays and Blinkt!)
-# Testing new LED shim
+# Plutus02 Test (for 2 max7219 displays)
+# Note: currently the code running the LED shim is in a separate file
 
 # luma.led_matrix setup
 from luma.core.interface.serial import spi, noop
@@ -11,7 +11,7 @@ device = max7219(serial, cascaded=2)
 seg = sevensegment(device)
 device.contrast(50) #set display brightness (int: 0 - 255)
 
-import blinkt
+#import blinkt
 #import ledshim
 import requests, json
 from time import sleep
@@ -25,7 +25,7 @@ same = (0,0,192)
 pixels = (0,1,2,3,4,5,6,7)
 '''
 
-neb_amt = 177.40242592 # Total NEBL's owned
+neb_amt = 242.47727592 # Total NEBL's owned
 prevPrice = 0.0
 
 # API's Used
