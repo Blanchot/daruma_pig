@@ -25,7 +25,7 @@ same = (0,0,192)
 pixels = (0,1,2,3,4,5,6,7)
 '''
 
-neb_amt = 2637.54123891 # Total 2637.54123891
+neb_amt = 3150.42151164 # Total 3150.42151164
 prevPrice = 0.0
 
 # API's Used
