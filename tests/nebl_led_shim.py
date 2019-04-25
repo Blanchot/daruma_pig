@@ -5,6 +5,7 @@
 # Weirdness with float subtraction... try 4.25 - 4.24
 # See here for Decimal fix:
 # https://stackoverflow.com/questions/14120340/python-error-in-basic-subtraction
+# 25.04.2019: Added JSONDecodeError and sleep(wait_secs) for all try-except cases
 
 import ledshim
 import requests, json
@@ -49,8 +50,6 @@ URL_1 = 'https://api.binance.com/api/v1/ticker/24hr?symbol=NEBLBTC' # NEBL price
 URL_2 = 'https://api.coinbase.com/v2/prices/spot?currency=EUR' #Convert BTC to Euro
 
 
-
-
 # Get current Binance price for NEBL (in BTC)
 def get_NEBL_price_in_btc():
   try:
@@ -68,7 +67,7 @@ def get_NEBL_price_in_btc():
     
   except requests.ConnectionError:
     print("Error querying Binance API")
-
+    sleep(wait_secs)
 
 
 # Convert BTC to Euro and send to changeTester
@@ -87,7 +86,11 @@ def get_BTC_price_in_euros(nebl_in_BTC):
     changeTester(nebl_price_in_euros)
   except requests.ConnectionError:
     print("Error querying Coinbase API")
-
+    sleep(wait_secs)
+  
+  except json.decoder.JSONDecodeError:
+    print("JSONDecodeError: 'Expecting value from line 1, column 1 but got None")
+    sleep(wait_secs)
 
 
 # USING THRESHOLD VARIABLE FOR DIFF ON LARGE RISE OR FALL 
