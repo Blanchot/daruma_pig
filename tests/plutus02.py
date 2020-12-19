@@ -1,5 +1,7 @@
 # Plutus02 Test (for 2 max7219 displays)
 # Note: currently the code running the LED shim is in a separate file
+# 2020.12.19... not sure which file I'm using on the pi to track Neblio...
+# 2020.12.19... continued... updating current Neblio amount in this file.
 
 # luma.led_matrix setup
 from luma.core.interface.serial import spi, noop
@@ -25,7 +27,7 @@ same = (0,0,192)
 pixels = (0,1,2,3,4,5,6,7)
 '''
 
-neb_amt = 3846.51610095 # Total 3846.51610095
+neb_amt = 4571.51153521 # Old total 3846.51610095, New total: 4571.51153521
 prevPrice = 0.0
 
 # API's Used
